@@ -214,7 +214,7 @@ _Hint: utilize .filter(), .toLowerCase(), and .includes()_
 
 
 ```js
-  const getFilteredVillagers = (e) => {
+  const getFilteredVillagers = () => {
     let searchTerm = search.toLowerCase()
     return data.villagers.filter(v => {
       let lowerCaseName = v.name['name-USen'].toLowerCase()
