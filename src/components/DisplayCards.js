@@ -28,9 +28,11 @@ export default function DisplayCards(props) {
             <ul
                 style={{
                     width: "300px",
-                    backgroundColor: props.color
+                    backgroundColor: props.color,
+                    textAlign: "center"
                 }}
             >
+                <h2>{props.title}</h2>
                 {allVillagers}
             </ul>
         </>

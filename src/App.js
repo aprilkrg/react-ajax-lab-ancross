@@ -16,8 +16,7 @@ export default function App() {
 
 				const response = await axios.get('http://acnhapi.com/v1/villagers/')
 				// console.log("VILLAGERS:", response.data) // obj of objs
-				// Object.values() turns data into arr of objs
-				// console.log("OBJECTS:", Object.values(response.data))
+				// console.log("OBJECTS:", Object.values(response.data)) // Object.values() turns data into arr of objs
 				// set state
 				setData({ villagers: Object.values(response.data) })
 			}
@@ -42,7 +41,7 @@ export default function App() {
 
 	const handleClick = (villager) => {
 		console.log(villager)
-		if(!faves.includes(villager)) {
+		if (!faves.includes(villager)) {
 			// if faves doesn't include villager, add it
 			setFaves([...faves, villager])
 		} else {
@@ -57,35 +56,50 @@ export default function App() {
 
 	return (
 		<>
-			<h1>Animal Crossing Villager Search</h1>
-			<div>
-				<label htmlFor="villager-search">Search for a villager:</label>
-				<input
-					id="villager-search"
-					type="text"
-					placeholder="filter by villagers name"
-					value={search}
-					onChange={handleChange}
-				/>
+			<div
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center"
+				}}
+			>
+				<h1>Animal Crossing Villager Search</h1>
+				<div>
+					<label htmlFor="villager-search">Search for a villager: </label>
+					<input
+						id="villager-search"
+						type="text"
+						placeholder="filter by villagers name"
+						value={search}
+						onChange={handleChange}
+						style={{
+							padding: "5px"
+						}}
+					/>
+				</div>
 			</div>
 			{/* {villagerList} */}
 			<div
 				style={{
-					display:"flex"
+					display: "flex",
+					justifyContent: "space-evenly"
 				}}
 			>
-				{/* <DisplayCards
-					villagers={data.villagers}
-					color={"blue"}
-				/> */}
 				<DisplayCards
+					title={"all villagers"}
+					villagers={data.villagers}
+					color={"rgba(0, 13, 248, .5"}
+				/>
+				<DisplayCards
+					title={"filtered villagers"}
 					villagers={filteredVillagers}
-					color={"red"}
+					color={"rgba(255, 7, 27, .5)"}
 					handleClick={handleClick}
 				/>
 				<DisplayCards
+					title={"favorite villagers"}
 					villagers={faves}
-					color={"yellow"}
+					color={"rgba(255, 255, 55, .5)"}
 					handleClick={handleClick}
 				/>
 			</div>
