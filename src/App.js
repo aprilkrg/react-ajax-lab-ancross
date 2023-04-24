@@ -9,27 +9,81 @@ export default function App() {
     const [data, setData] = useState({ villagers: [] })
     const [search, setSearch] = useState("")
     const [faves, setFaves] = useState([])
+    const [personalities, setPersonalites] = useState({
+        cranky: [],
+        jock: [],
+        lazy: [],
+        normal: [],
+        peppy: [],
+        smug: [],
+        snooty: [],
+        uchi: []
+    })
 
     // LIFECYCLE
     useEffect(() => {
         try {
             async function fetchData() {
-
                 const response = await axios.get('http://acnhapi.com/v1/villagers/')
-                // console.log("VILLAGERS:", response.data) // obj of objs
-                // console.log("OBJECTS:", Object.values(response.data)) // Object.values() turns data into arr of objs
                 setData({ villagers: Object.values(response.data) })
             }
             fetchData()
+            async function sortByPersonality() {
+                const stateObj = {
+                    cranky: [],
+                    jock: [],
+                    lazy: [],
+                    normal: [],
+                    peppy: [],
+                    smug: [],
+                    snooty: [],
+                    uchi: []
+                }
+                await data.villagers.map(villager => {
+
+                    if (villager.personality === "Cranky") {
+                        stateObj.cranky.push(villager)
+                    }
+                    else if (villager.personality === "Jock") {
+                        stateObj.jock.push(villager)
+                    }
+                    else if (villager.personality === "Lazy") {
+                        stateObj.lazy.push(villager)
+                    }
+                    else if (villager.personality === "Normal") {
+                        stateObj.normal.push(villager)
+                    }
+                    else if (villager.personality === "Peppy") {
+                        stateObj.peppy.push(villager)
+                    }
+                    else if (villager.personality === "Smug") {
+                        stateObj.smug.push(villager)
+                    }
+                    else if (villager.personality === "Snooty") {
+                        stateObj.snooty.push(villager)
+                    }
+                    else if (villager.personality === "Uchi") {
+                        stateObj.uchi.push(villager)
+                    }
+                })
+                setPersonalites({ 
+                    cranky: [...stateObj.cranky],
+                    jock: [...stateObj.jock],
+                    lazy: [...stateObj.lazy],
+                    normal: [...stateObj.normal],
+                    peppy: [...stateObj.peppy],
+                    smug: [...stateObj.smug],
+                    snooty: [...stateObj.snooty],
+                    uchi: [...stateObj.uchi],
+                })
+            }
+            sortByPersonality()
         } catch (err) {
             console.warn(err)
         }
     }, [])
 
     // FUNCTIONS
-    // const villagerList = data.villagers.map((villager) => {
-    // 	return <li>{villager.name["name-USen"]}</li>
-    // })
     const handleChange = (e) => {
         setSearch(e.target.value)
     }
@@ -49,10 +103,11 @@ export default function App() {
             const villagerIndex = faves.indexOf(villager)
             const favesState = [...faves]
             favesState.splice(villagerIndex, 1)
-            // console.log(favesState)
             setFaves(favesState)
         }
     }
+
+
 
     return (
         <>
@@ -69,12 +124,12 @@ export default function App() {
                     />
                 </div>
             </div>
-            {/* {villagerList} */}
             <div className="cards">
                 <DisplayCards
                     title={"all-villagers"}
                     color={"rgba(98, 239, 244, .5)"}
                     villagers={data.villagers}
+                    handleClick={null}
                 />
                 <DisplayCards
                     title={"filtered-villagers"}
