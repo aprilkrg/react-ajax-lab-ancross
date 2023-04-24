@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios';
+import ScrollToTop from 'react-scroll-to-top';
 import './App.css';
 import DisplayCards from './components/DisplayCards.js'
 
@@ -88,6 +89,7 @@ export default function App() {
                     handleClick={handleClick}
                 />
             </div>
+            <ScrollToTop smooth />
         </>
     )
 }
