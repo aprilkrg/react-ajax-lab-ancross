@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 10px;
+  background-color: rgba(194, 130, 63, .2);
 }
 input {
   padding: 5px;
@@ -17,8 +19,12 @@ input {
 .cards li {
   list-style-type: none;
   border: 3px black solid;
+  background-color: rgba(242, 228, 216, .5);
   margin: 5px;
   width: max-content;
+}
+.cards li > p {
+  font-weight: 600;
 }
 .cards img {
   max-width: 250px;

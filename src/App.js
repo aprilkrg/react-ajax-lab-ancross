@@ -73,18 +73,18 @@ export default function App() {
             <div className="cards">
                 <DisplayCards
                     title={"all-villagers"}
-                    color={"rgba(255, 7, 27, .5)"}
+                    color={"rgba(98, 239, 244, .5)"}
                     villagers={data.villagers}
                 />
                 <DisplayCards
                     title={"filtered-villagers"}
-                    color={"rgba(0, 13, 248, .5"}
+                    color={"rgba(133, 255, 171, .5"}
                     villagers={filteredVillagers}
                     handleClick={handleClick}
                 />
                 <DisplayCards
                     title={"favorite-villagers"}
-                    color={"rgba(255, 255, 55, .5)"}
+                    color={"rgba(255, 243, 102, .5)"}
                     villagers={faves}
                     handleClick={handleClick}
                 />
