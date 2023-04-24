@@ -6,10 +6,11 @@ import DisplayCards from './components/DisplayCards.js'
 
 export default function App() {
     // STATE
-    const [data, setData] = useState({ villagers: [] })
+    const [data, setData] = useState({ villagers: []})
     const [search, setSearch] = useState("")
     const [faves, setFaves] = useState([])
-    const [personalities, setPersonalites] = useState({
+    const [filtered, setFiltered] = useState([])
+    const [personalities, setsPersonalities] = useState({
         cranky: [],
         jock: [],
         lazy: [],
@@ -19,7 +20,6 @@ export default function App() {
         snooty: [],
         uchi: []
     })
-
     // LIFECYCLE
     useEffect(() => {
         try {
@@ -40,7 +40,6 @@ export default function App() {
                     uchi: []
                 }
                 await data.villagers.map(villager => {
-
                     if (villager.personality === "Cranky") {
                         stateObj.cranky.push(villager)
                     }
@@ -66,7 +65,7 @@ export default function App() {
                         stateObj.uchi.push(villager)
                     }
                 })
-                setPersonalites({ 
+                setsPersonalities({ 
                     cranky: [...stateObj.cranky],
                     jock: [...stateObj.jock],
                     lazy: [...stateObj.lazy],
@@ -84,14 +83,21 @@ export default function App() {
     }, [])
 
     // FUNCTIONS
-    const handleChange = (e) => {
-        setSearch(e.target.value)
-    }
-
     const filteredVillagers = data.villagers.filter(villager => {
         const loweredName = villager.name["name-USen"].toLowerCase()
         return loweredName.includes(search.toLowerCase())
     })
+    
+    const handleChange = (e) => {
+        setSearch(e.target.value)
+        // const filteredData = filteredVillagers
+        // setFiltered([...filteredData])
+        // const filteredVillagers = data.villagers.filter(villager => {
+        //     const loweredName = villager.name["name-USen"].toLowerCase()
+        //     return loweredName.includes(search.toLowerCase())
+        // })
+        // setFiltered([...filteredVillagers])
+    }
 
     const handleClick = (villager) => {
         console.log(villager)
@@ -107,6 +113,12 @@ export default function App() {
         }
     }
 
+    const handleBtnClick = (type) => {
+        console.log(type)
+        // on btn click, change the filtered villagers in state from filtered by name sub string to personalities state arr
+        // console.log(personalities[type])
+        setFiltered([...personalities[type]])
+    }
 
 
     return (
@@ -123,6 +135,15 @@ export default function App() {
                         onChange={handleChange}
                     />
                 </div>
+                <p>Filter by personality type: 
+                    <button onClick={() => {handleBtnClick("cranky")}}>Crankies</button>
+                    <button onClick={() => {handleBtnClick("jock")}}>Jocks</button>
+                    <button onClick={() => {handleBtnClick("lazy")}}>Lazys</button>
+                    <button onClick={() => {handleBtnClick("normal")}}>Normals</button>
+                    <button onClick={() => {handleBtnClick("peppy")}}>Peppys</button>
+                    <button onClick={() => {handleBtnClick("snooty")}}>Snooties</button>
+                    <button onClick={() => {handleBtnClick("uchi")}}>Sisterlies</button>
+                </p>
             </div>
             <div className="cards">
                 <DisplayCards

@@ -26,6 +26,9 @@ input {
 .cards li > p {
   font-weight: 600;
 }
+.cards li > span {
+  font-weight: 200;
+}
 .cards img {
   max-width: 250px;
 }

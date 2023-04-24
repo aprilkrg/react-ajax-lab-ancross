@@ -9,6 +9,7 @@ export default function Card(props) {
                     alt={"picture of " + props.villager.name["name-USen"]}
                 />
                 <p>{props.villager.name["name-USen"]}</p>
+                <span>"{props.villager["catch-phrase"]}"</span>
             </li>
         </>
     )
