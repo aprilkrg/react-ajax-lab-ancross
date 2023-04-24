@@ -86,18 +86,18 @@ export default function App() {
 				}}
 			>
 				<DisplayCards
-					title={"all villagers"}
+					title={"all-villagers"}
 					villagers={data.villagers}
 					color={"rgba(0, 13, 248, .5"}
 				/>
 				<DisplayCards
-					title={"filtered villagers"}
+					title={"filtered-villagers"}
 					villagers={filteredVillagers}
 					color={"rgba(255, 7, 27, .5)"}
 					handleClick={handleClick}
 				/>
 				<DisplayCards
-					title={"favorite villagers"}
+					title={"favorite-villagers"}
 					villagers={faves}
 					color={"rgba(255, 255, 55, .5)"}
 					handleClick={handleClick}
