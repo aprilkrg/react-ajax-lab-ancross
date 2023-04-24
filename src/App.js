@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 import DisplayCards from './components/DisplayCards.js'
 
-function App() {
+export default function App() {
 	// STATE
 	const [data, setData] = useState({ villagers: [] })
 	const [search, setSearch] = useState("")
@@ -92,5 +92,3 @@ function App() {
 		</>
 	)
 }
-
-export default App;
