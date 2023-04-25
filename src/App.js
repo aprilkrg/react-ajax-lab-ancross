@@ -9,17 +9,17 @@ export default function App() {
     const [data, setData] = useState({ villagers: []})
     const [search, setSearch] = useState("")
     const [faves, setFaves] = useState([])
-    // const [filtered, setFiltered] = useState([])
-    // const [personalities, setsPersonalities] = useState({
-    //     cranky: [],
-    //     jock: [],
-    //     lazy: [],
-    //     normal: [],
-    //     peppy: [],
-    //     smug: [],
-    //     snooty: [],
-    //     uchi: []
-    // })
+    const [filtered, setFiltered] = useState([])
+    const [personalities, setsPersonalities] = useState({
+        cranky: [],
+        jock: [],
+        lazy: [],
+        normal: [],
+        peppy: [],
+        smug: [],
+        snooty: [],
+        uchi: []
+    })
     // LIFECYCLE
     useEffect(() => {
         try {
@@ -29,55 +29,55 @@ export default function App() {
                 // setFiltered(Object.values(response.data))
             }
             fetchData()
-            // async function sortByPersonality() {
-            //     const stateObj = {
-            //         cranky: [],
-            //         jock: [],
-            //         lazy: [],
-            //         normal: [],
-            //         peppy: [],
-            //         smug: [],
-            //         snooty: [],
-            //         uchi: []
-            //     }
-            //     await data.villagers.forEach(villager => {
-            //         if (villager.personality === "Cranky") {
-            //             stateObj.cranky.push(villager)
-            //         }
-            //         else if (villager.personality === "Jock") {
-            //             stateObj.jock.push(villager)
-            //         }
-            //         else if (villager.personality === "Lazy") {
-            //             stateObj.lazy.push(villager)
-            //         }
-            //         else if (villager.personality === "Normal") {
-            //             stateObj.normal.push(villager)
-            //         }
-            //         else if (villager.personality === "Peppy") {
-            //             stateObj.peppy.push(villager)
-            //         }
-            //         else if (villager.personality === "Smug") {
-            //             stateObj.smug.push(villager)
-            //         }
-            //         else if (villager.personality === "Snooty") {
-            //             stateObj.snooty.push(villager)
-            //         }
-            //         else if (villager.personality === "Uchi") {
-            //             stateObj.uchi.push(villager)
-            //         }
-            //     })
-            //     setsPersonalities({ 
-            //         cranky: [...stateObj.cranky],
-            //         jock: [...stateObj.jock],
-            //         lazy: [...stateObj.lazy],
-            //         normal: [...stateObj.normal],
-            //         peppy: [...stateObj.peppy],
-            //         smug: [...stateObj.smug],
-            //         snooty: [...stateObj.snooty],
-            //         uchi: [...stateObj.uchi],
-            //     })
-            // }
-            // sortByPersonality()
+            async function sortByPersonality() {
+                const stateObj = {
+                    cranky: [],
+                    jock: [],
+                    lazy: [],
+                    normal: [],
+                    peppy: [],
+                    smug: [],
+                    snooty: [],
+                    uchi: []
+                }
+                await data.villagers.forEach(villager => {
+                    if (villager.personality === "Cranky") {
+                        stateObj.cranky.push(villager)
+                    }
+                    else if (villager.personality === "Jock") {
+                        stateObj.jock.push(villager)
+                    }
+                    else if (villager.personality === "Lazy") {
+                        stateObj.lazy.push(villager)
+                    }
+                    else if (villager.personality === "Normal") {
+                        stateObj.normal.push(villager)
+                    }
+                    else if (villager.personality === "Peppy") {
+                        stateObj.peppy.push(villager)
+                    }
+                    else if (villager.personality === "Smug") {
+                        stateObj.smug.push(villager)
+                    }
+                    else if (villager.personality === "Snooty") {
+                        stateObj.snooty.push(villager)
+                    }
+                    else if (villager.personality === "Uchi") {
+                        stateObj.uchi.push(villager)
+                    }
+                })
+                setsPersonalities({ 
+                    cranky: [...stateObj.cranky],
+                    jock: [...stateObj.jock],
+                    lazy: [...stateObj.lazy],
+                    normal: [...stateObj.normal],
+                    peppy: [...stateObj.peppy],
+                    smug: [...stateObj.smug],
+                    snooty: [...stateObj.snooty],
+                    uchi: [...stateObj.uchi],
+                })
+            }
+            sortByPersonality()
         } catch (err) {
             console.warn(err)
         }
@@ -90,14 +90,16 @@ export default function App() {
     })
     
     const handleChange = (e) => {
+        // console.log("ahndle change happeing")
         setSearch(e.target.value)
         // const filteredData = filteredVillagers
         // setFiltered([...filteredData])
-        // const filteredVillagers = data.villagers.filter(villager => {
+        // const filteredArr = data.villagers.filter(villager => {
         //     const loweredName = villager.name["name-USen"].toLowerCase()
+        //     console.log(loweredName)
         //     return loweredName.includes(search.toLowerCase())
         // })
-        // setFiltered([...filteredVillagers])
+        // setFiltered(filteredArr)
     }
 
     const handleClick = (villager) => {
@@ -114,12 +116,12 @@ export default function App() {
         }
     }
 
-    // const handleBtnClick = (type) => {
-    //     console.log(type)
-    //     // on btn click, change the filtered villagers in state from filtered by name sub string to personalities state arr
-    //     // console.log(personalities[type])
-    //     setFiltered([...personalities[type]])
-    // }
+    const handleBtnClick = (type) => {
+        console.log(type)
+        // on btn click, change the filtered villagers in state from filtered by name sub string to personalities state arr
+        // console.log(personalities[type])
+        setFiltered([...personalities[type]])
+    }
 
 
     return (
@@ -136,7 +138,7 @@ export default function App() {
                         onChange={handleChange}
                     />
                 </div>
-                {/* <p>Filter by personality type: 
+                <p>Filter by personality type: 
                     <button onClick={() => {handleBtnClick("cranky")}}>Crankies</button>
                     <button onClick={() => {handleBtnClick("jock")}}>Jocks</button>
                     <button onClick={() => {handleBtnClick("lazy")}}>Lazys</button>
@@ -144,7 +146,7 @@ export default function App() {
                     <button onClick={() => {handleBtnClick("peppy")}}>Peppys</button>
                     <button onClick={() => {handleBtnClick("snooty")}}>Snooties</button>
                     <button onClick={() => {handleBtnClick("uchi")}}>Sisterlies</button>
-                </p> */}
+                </p>
             </div>
             <div className="cards">
                 <DisplayCards
@@ -156,7 +158,7 @@ export default function App() {
                 <DisplayCards
                     title={"filtered-villagers"}
                     color={"rgba(133, 255, 171, .5"}
-                    villagers={filteredVillagers}
+                    villagers={filtered.length ? filtered : filteredVillagers}
                     handleClick={handleClick}
                 />
                 <DisplayCards
