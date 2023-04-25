@@ -1,3 +1,6 @@
+body {
+  font-family: 'Zilla Slab', serif;
+}
 .App {
   display: flex;
   flex-direction: column;
@@ -6,7 +9,35 @@
   background-color: rgba(194, 130, 63, .2);
 }
 input {
-  padding: 5px;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+button {
+  padding: 10px 15px;
+  margin: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: black;
+  background-color: rgba(133, 255, 171, .5);
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px rgba(98, 239, 244, .5);
+}
+button:hover {
+  background-color: rgba(116, 250, 158, 0.8);
+}
+button:active {
+  background-color:  rgba(105, 249, 150, 1);
+  box-shadow: 0 3px rgba(98, 239, 244, 1);
+  transform: translateY(2px);
+}
+/* button pressed effect courtesy w3schools https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_animate3 */
+.filtered {
+  background-color:  rgba(105, 249, 150, 1);
 }
 .cards {
   display: flex;

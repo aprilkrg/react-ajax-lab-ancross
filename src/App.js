@@ -131,14 +131,14 @@ export default function App() {
                     />
                 </div>
                 <p>Filter by personality type: 
-                    <button onClick={() => {handleBtnClick("all")}}>All</button>
-                    <button onClick={() => {handleBtnClick("cranky")}}>Crankies</button>
-                    <button onClick={() => {handleBtnClick("jock")}}>Jocks</button>
-                    <button onClick={() => {handleBtnClick("lazy")}}>Lazys</button>
-                    <button onClick={() => {handleBtnClick("normal")}}>Normals</button>
-                    <button onClick={() => {handleBtnClick("peppy")}}>Peppys</button>
-                    <button onClick={() => {handleBtnClick("snooty")}}>Snooties</button>
-                    <button onClick={() => {handleBtnClick("uchi")}}>Sisterlies</button>
+                    <button id={"all"} onClick={() => {handleBtnClick("all")}}>All</button>
+                    <button id={"cranky"} onClick={() => {handleBtnClick("cranky")}}>Crankies</button>
+                    <button id={"jock"} onClick={() => {handleBtnClick("jock")}}>Jocks</button>
+                    <button id={"lazy"} onClick={() => {handleBtnClick("lazy")}}>Lazys</button>
+                    <button id={"normal"} onClick={() => {handleBtnClick("normal")}}>Normals</button>
+                    <button id={"peppy"} onClick={() => {handleBtnClick("peppy")}}>Peppys</button>
+                    <button id={"snooty"} onClick={() => {handleBtnClick("snooty")}}>Snooties</button>
+                    <button id={"uchi"} onClick={() => {handleBtnClick("uchi")}}>Sisterlies</button>
                 </p>
             </div>
             <div className="cards">
@@ -150,7 +150,7 @@ export default function App() {
                 />
                 <DisplayCards
                     title={"filtered-villagers"}
-                    color={"rgba(133, 255, 171, .5"}
+                    color={"rgba(133, 255, 171, .5)"}
                     villagers={filtered.length ? filtered : filteredVillagers}
                     handleClick={handleClick}
                 />
