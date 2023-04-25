@@ -26,7 +26,6 @@ export default function App() {
             async function fetchData() {
                 const response = await axios.get('http://acnhapi.com/v1/villagers/')
                 setData({ villagers: Object.values(response.data) })
-                // setFiltered(Object.values(response.data))
             }
             fetchData()
             async function sortByPersonality() {
@@ -67,21 +66,21 @@ export default function App() {
                     }
                 })
                 setsPersonalities({ 
-                    cranky: [...stateObj.cranky],
-                    jock: [...stateObj.jock],
-                    lazy: [...stateObj.lazy],
-                    normal: [...stateObj.normal],
-                    peppy: [...stateObj.peppy],
-                    smug: [...stateObj.smug],
-                    snooty: [...stateObj.snooty],
-                    uchi: [...stateObj.uchi],
+                    cranky: stateObj.cranky,
+                    jock: stateObj.jock,
+                    lazy: stateObj.lazy,
+                    normal: stateObj.normal,
+                    peppy: stateObj.peppy,
+                    smug: stateObj.smug,
+                    snooty: stateObj.snooty,
+                    uchi: stateObj.uchi,
                 })
             }
             sortByPersonality()
         } catch (err) {
             console.warn(err)
         }
-    }, [])
+    }, [data.villagers])
 
     // FUNCTIONS
     const filteredVillagers = data.villagers.filter(villager => {
@@ -90,20 +89,10 @@ export default function App() {
     })
     
     const handleChange = (e) => {
-        // console.log("ahndle change happeing")
         setSearch(e.target.value)
-        // const filteredData = filteredVillagers
-        // setFiltered([...filteredData])
-        // const filteredArr = data.villagers.filter(villager => {
-        //     const loweredName = villager.name["name-USen"].toLowerCase()
-        //     console.log(loweredName)
-        //     return loweredName.includes(search.toLowerCase())
-        // })
-        // setFiltered(filteredArr)
     }
 
     const handleClick = (villager) => {
-        console.log(villager)
         if (!faves.includes(villager)) {
             // if faves doesn't include villager, add it
             setFaves([...faves, villager])
@@ -117,9 +106,7 @@ export default function App() {
     }
 
     const handleBtnClick = (type) => {
-        console.log(type)
-        // on btn click, change the filtered villagers in state from filtered by name sub string to personalities state arr
-        // console.log(personalities[type])
+        // console.log(type)
         setFiltered([...personalities[type]])
     }
 
