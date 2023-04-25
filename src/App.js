@@ -113,6 +113,7 @@ export default function App() {
   }
 
   const handleBtnClick = (type) => {
+    setSearch("")
     if (type === "all") {
       setFiltered([])
       setActiveBtn("all")
