@@ -92,6 +92,7 @@ export default function App() {
 
   const handleChange = (e) => {
     setFiltered([])
+    setActiveBtn("")
     setSearch(e.target.value)
   }
 
@@ -112,10 +113,9 @@ export default function App() {
   }
 
   const handleBtnClick = (type) => {
-    console.log(type)
     if (type === "all") {
       setFiltered([])
-      setActiveBtn("")
+      setActiveBtn("all")
     } else {
       setFiltered([...personalities[type]])
       setActiveBtn(type)
@@ -132,7 +132,7 @@ export default function App() {
           <input
             id="villager-search"
             type="text"
-            placeholder="filter by villagers name"
+            placeholder="enter villager name"
             value={search}
             onChange={handleChange}
           />
@@ -150,19 +150,19 @@ export default function App() {
       </div>
       <div className="cards">
         <DisplayCards
-          title={"all-villagers"}
+          title={"All Villagers"}
           color={"rgba(98, 239, 244, .5)"}
           villagers={data.villagers}
           handleClick={() => console.log("clicked")}
         />
         <DisplayCards
-          title={"filtered-villagers"}
+          title={"Filtered Villagers"}
           color={"rgba(133, 255, 171, .5)"}
           villagers={filtered.length ? filtered : filteredVillagers}
           handleClick={handleClick}
         />
         <DisplayCards
-          title={"favorite-villagers"}
+          title={"Favorite Villagers"}
           color={"rgba(255, 243, 102, .5)"}
           villagers={faves}
           handleClick={handleClick}
