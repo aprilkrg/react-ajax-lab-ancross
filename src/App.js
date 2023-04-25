@@ -20,7 +20,10 @@ export default function App() {
         snooty: [],
         uchi: []
     })
-    const [isActive, setIsActive] = useState(false)
+    const [activeBtn, setActiveBtn] = useState({
+      isActive: false,
+      id: null
+    })
 
     // LIFECYCLE
     useEffect(() => {
@@ -109,13 +112,16 @@ export default function App() {
     }
 
     const handleBtnClick = (type) => {
-        // console.log(type)
+        console.log(type)
         if(type === "all") {
             setFiltered([])
         } else {
             setFiltered([...personalities[type]])
         }
-        setIsActive(!isActive)
+        setActiveBtn({
+          isActive: !activeBtn.isActive,
+          id: type
+        })
     }
 
 
@@ -134,14 +140,14 @@ export default function App() {
                     />
                 </div>
                 <p>Filter by personality type: 
-                    <button id={"all"} className={isActive ? "filtered" : ""} onClick={() => {handleBtnClick("all")}}>All</button>
-                    <button id={"cranky"} className={isActive ? "filtered" : ""} onClick={() => {handleBtnClick("cranky")}}>Crankies</button>
-                    <button id={"jock"} className={isActive ? "filtered" : ""} onClick={() => {handleBtnClick("jock")}}>Jocks</button>
-                    <button id={"lazy"} className={isActive ? "filtered" : ""} onClick={() => {handleBtnClick("lazy")}}>Lazys</button>
-                    <button id={"normal"} className={isActive ? "filtered" : ""} onClick={() => {handleBtnClick("normal")}}>Normals</button>
-                    <button id={"peppy"} className={isActive ? "filtered" : ""} onClick={() => {handleBtnClick("peppy")}}>Peppys</button>
-                    <button id={"snooty"} className={isActive ? "filtered" : ""} onClick={() => {handleBtnClick("snooty")}}>Snooties</button>
-                    <button id={"uchi"} className={isActive ? "filtered" : ""} onClick={() => {handleBtnClick("uchi")}}>Sisterlies</button>
+                    <button id={"all"} className={activeBtn.isActive && activeBtn.id === "all" ? "filtered" : ""} onClick={() => {handleBtnClick("all")}}>All</button>
+                    <button id={"cranky"} className={activeBtn.isActive && activeBtn.id === "cranky" ? "filtered" : ""} onClick={() => {handleBtnClick("cranky")}}>Crankies</button>
+                    <button id={"jock"} className={activeBtn.isActive && activeBtn.id === "jock" ? "filtered" : ""} onClick={() => {handleBtnClick("jock")}}>Jocks</button>
+                    <button id={"lazy"} className={activeBtn.isActive && activeBtn.id === "lazy" ? "filtered" : ""} onClick={() => {handleBtnClick("lazy")}}>Lazys</button>
+                    <button id={"normal"} className={activeBtn.isActive && activeBtn.id === "normal" ? "filtered" : ""} onClick={() => {handleBtnClick("normal")}}>Normals</button>
+                    <button id={"peppy"} className={activeBtn.isActive && activeBtn.id === "peppy" ? "filtered" : ""} onClick={() => {handleBtnClick("peppy")}}>Peppys</button>
+                    <button id={"snooty"} className={activeBtn.isActive && activeBtn.id === "snooty" ? "filtered" : ""} onClick={() => {handleBtnClick("snooty")}}>Snooties</button>
+                    <button id={"uchi"} className={activeBtn.isActive && activeBtn.id === "uchi" ? "filtered" : ""} onClick={() => {handleBtnClick("uchi")}}>Sisterlies</button>
                 </p>
             </div>
             <div className="cards">
