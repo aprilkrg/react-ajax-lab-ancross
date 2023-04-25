@@ -12,6 +12,7 @@ input {
   padding: 8px;
   border: none;
   border-radius: 5px;
+  box-shadow: 0 5px rgba(255, 243, 102, .5);
 }
 button {
   padding: 10px 15px;
