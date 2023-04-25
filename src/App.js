@@ -112,6 +112,8 @@ export default function App() {
     }
   }
 
+
+
   const handleBtnClick = (type) => {
     setSearch("")
     if (type === "all") {
@@ -121,6 +123,10 @@ export default function App() {
       setFiltered([...personalities[type]])
       setActiveBtn(type)
     }
+  }
+
+  const handleClear = () => {
+    setFaves([])
   }
 
 
@@ -139,14 +145,14 @@ export default function App() {
           />
         </div>
         <p>Filter by personality type:
-          <button className={activeBtn === "all" ? "filtered" : ""} onClick={() => { handleBtnClick("all") }}>All</button>
-          <button className={activeBtn === "cranky" ? "filtered" : ""} onClick={() => { handleBtnClick("cranky") }}>Crankies</button>
-          <button className={activeBtn === "jock" ? "filtered" : ""} onClick={() => { handleBtnClick("jock") }}>Jocks</button>
-          <button className={activeBtn === "lazy" ? "filtered" : ""} onClick={() => { handleBtnClick("lazy") }}>Lazys</button>
-          <button className={activeBtn === "normal" ? "filtered" : ""} onClick={() => { handleBtnClick("normal") }}>Normals</button>
-          <button className={activeBtn === "peppy" ? "filtered" : ""} onClick={() => { handleBtnClick("peppy") }}>Peppys</button>
-          <button className={activeBtn === "snooty" ? "filtered" : ""} onClick={() => { handleBtnClick("snooty") }}>Snooties</button>
-          <button className={activeBtn === "uchi" ? "filtered" : ""} onClick={() => { handleBtnClick("uchi") }}>Sisterlies</button>
+          <button className={activeBtn === "all" ? "filtered btn" : "btn"} onClick={() => { handleBtnClick("all") }}>All</button>
+          <button className={activeBtn === "cranky" ? "filtered btn" : "btn"} onClick={() => { handleBtnClick("cranky") }}>Crankies</button>
+          <button className={activeBtn === "jock" ? "filtered btn" : "btn"} onClick={() => { handleBtnClick("jock") }}>Jocks</button>
+          <button className={activeBtn === "lazy" ? "filtered btn" : "btn"} onClick={() => { handleBtnClick("lazy") }}>Lazys</button>
+          <button className={activeBtn === "normal" ? "filtered btn" : "btn"} onClick={() => { handleBtnClick("normal") }}>Normals</button>
+          <button className={activeBtn === "peppy" ? "filtered btn" : "btn"} onClick={() => { handleBtnClick("peppy") }}>Peppys</button>
+          <button className={activeBtn === "snooty" ? "filtered btn" : "btn"} onClick={() => { handleBtnClick("snooty") }}>Snooties</button>
+          <button className={activeBtn === "uchi" ? "filtered btn" : "btn"} onClick={() => { handleBtnClick("uchi") }}>Sisterlies</button>
         </p>
       </div>
       <div className="cards">
@@ -167,6 +173,7 @@ export default function App() {
           color={"rgba(255, 243, 102, .5)"}
           villagers={faves}
           handleClick={handleClick}
+          handleClear={handleClear}
         />
       </div>
       <ScrollToTop smooth />

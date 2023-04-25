@@ -15,7 +15,10 @@ export default function DisplayCards(props) {
                     backgroundColor: props.color,
                 }}
             >
-                <h2>{props.title}</h2>
+                <h2 className={props.handleClear ? "flex" : null}>
+                    {props.title}
+                    {props.handleClear ? <button className={"clear"} onClick={props.handleClear}>Clear</button> : null}
+                </h2>
                 {allVillagers}
             </ul>
         </>
