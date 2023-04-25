@@ -10,7 +10,7 @@ export default function App() {
     const [search, setSearch] = useState("")
     const [faves, setFaves] = useState([])
     const [filtered, setFiltered] = useState([])
-    const [personalities, setsPersonalities] = useState({
+    const [personalities, setPersonalities] = useState({
         cranky: [],
         jock: [],
         lazy: [],
@@ -65,7 +65,7 @@ export default function App() {
                         stateObj.uchi.push(villager)
                     }
                 })
-                setsPersonalities({ 
+                setPersonalities({ 
                     cranky: stateObj.cranky,
                     jock: stateObj.jock,
                     lazy: stateObj.lazy,
@@ -89,6 +89,7 @@ export default function App() {
     })
     
     const handleChange = (e) => {
+        setFiltered([])
         setSearch(e.target.value)
     }
 
@@ -107,7 +108,11 @@ export default function App() {
 
     const handleBtnClick = (type) => {
         // console.log(type)
-        setFiltered([...personalities[type]])
+        if(type === "all") {
+            setFiltered([])
+        } else {
+            setFiltered([...personalities[type]])
+        }
     }
 
 
@@ -126,6 +131,7 @@ export default function App() {
                     />
                 </div>
                 <p>Filter by personality type: 
+                    <button onClick={() => {handleBtnClick("all")}}>All</button>
                     <button onClick={() => {handleBtnClick("cranky")}}>Crankies</button>
                     <button onClick={() => {handleBtnClick("jock")}}>Jocks</button>
                     <button onClick={() => {handleBtnClick("lazy")}}>Lazys</button>
