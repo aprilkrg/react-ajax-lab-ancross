@@ -119,7 +119,7 @@ export default function App() {
             setFiltered([...personalities[type]])
         }
         setActiveBtn({
-          isActive: !activeBtn.isActive,
+          isActive: true,
           id: type
         })
     }
