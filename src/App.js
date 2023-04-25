@@ -21,8 +21,8 @@ export default function App() {
         uchi: []
     })
     const [activeBtn, setActiveBtn] = useState({
-      isActive: false,
-      id: null
+      isActive: true,
+      id: "all"
     })
 
     // LIFECYCLE
@@ -120,7 +120,7 @@ export default function App() {
         }
         setActiveBtn({
           isActive: true,
-          id: type
+          id: type 
         })
     }
 
